@@ -1,0 +1,416 @@
+import { Student, University, Mentor, Scholarship, TimelinePhase, PortfolioItem, HowToGuide, ExecutiveStat } from '@/types/report';
+
+export const mockStudent: Student = {
+  id: '1',
+  name: 'Dishita Jain',
+  avatar: undefined,
+  program: 'Law · UK',
+  targetIntake: 'Sept 2027',
+  cbseGoal: '90%+ (aim 92% for Oxbridge)',
+  lnatTarget: '28/42+',
+  currentStage: 'Live-Updating Roadmap',
+  completionPercentage: 65,
+};
+
+export const executiveStats: ExecutiveStat[] = [
+  {
+    label: 'Academic Engine',
+    value: '90–95% CBSE',
+    description: 'Strengthen History, Political Science & English',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask a CBSE → Oxbridge student',
+  },
+  {
+    label: 'Testing Targets',
+    value: 'LNAT 28/42+',
+    description: 'IELTS 7.5+ overall',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'See how others prepped',
+  },
+  {
+    label: 'Profile Signature',
+    value: 'AI in Law',
+    description: 'Policy, justice & legal tech narrative',
+  },
+];
+
+export const executiveSummary = `Your roadmap is built around three pillars: (1) exceptional grades and test scores, (2) a sharp, coherent story around law, justice and AI, and (3) evidence of real-world impact through projects, internships and writing. Whenever something changes—like your LNAT score, a new internship, or a missed deadline—you can tell your report using the chat. We use that new context to adjust universities, tasks and timelines.
+
+As an organisation, we care most about truthful, on-ground information, even if someone else is helping you with applications. That's why this report connects you to EduMentors—students who actually study this course, in this university, in this city and country—so you aren't relying only on brochures and marketing pages.`;
+
+export const mockUniversities: University[] = [
+  // Aspirational
+  {
+    id: 'cambridge-law',
+    name: 'University of Cambridge',
+    location: 'Cambridge',
+    country: 'UK',
+    category: 'aspirational',
+    program: 'BA Law',
+    cbseRequirement: '92%+ ideal',
+    lnatRequired: true,
+    description: 'Highly academic, essay-heavy course with strong emphasis on analytical reading and writing. Early deadline via UCAS (mid-October).',
+    fitNote: 'Stretch fit with strong grades & LNAT',
+    officialLink: 'https://www.undergraduate.study.cam.ac.uk/courses/law-ba-hons',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask a Cambridge law student what day-to-day looks like',
+  },
+  {
+    id: 'oxford-law',
+    name: 'University of Oxford',
+    location: 'Oxford',
+    country: 'UK',
+    category: 'aspirational',
+    program: 'Law (Jurisprudence)',
+    cbseRequirement: '90–92%+',
+    lnatRequired: true,
+    lnatNote: 'compulsory',
+    description: 'Intensive tutorial system with close reading of cases and arguments. Selection is heavily driven by LNAT + interviews.',
+    fitNote: 'Stretch fit; interviews are key',
+    officialLink: 'https://www.ox.ac.uk/admissions/undergraduate/courses/course-listing/law-jurisprudence',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Talk to an Oxford law student about interviews',
+  },
+  // Reach
+  {
+    id: 'lse-law',
+    name: 'LSE',
+    location: 'London',
+    country: 'UK',
+    category: 'reach',
+    program: 'LLB Bachelor of Laws',
+    cbseRequirement: '90–92%',
+    lnatRequired: true,
+    description: 'Social-science oriented law degree with strong focus on LNAT MCQ performance and written skills.',
+    fitNote: 'Competitive fit with strong LNAT',
+    officialLink: 'https://www.lse.ac.uk/study-at-lse/undergraduate/llb-bachelor-of-laws',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask an LSE student about LNAT expectations',
+  },
+  {
+    id: 'ucl-law',
+    name: 'UCL',
+    location: 'London',
+    country: 'UK',
+    category: 'reach',
+    program: 'LLB Law',
+    cbseRequirement: '~90–95%',
+    lnatRequired: true,
+    lnatNote: 'holistic',
+    description: 'Research-intensive degree with holistic review of grades, LNAT and overall profile, including personal statement and references.',
+    fitNote: 'Strong match with a rounded profile',
+    officialLink: 'https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/law-llb/',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Talk to a UCL student about balancing profile & academics',
+  },
+  {
+    id: 'kcl-law',
+    name: "King's College London",
+    location: 'London',
+    country: 'UK',
+    category: 'reach',
+    program: 'LLB',
+    cbseRequirement: '90–92%',
+    lnatRequired: true,
+    lnatNote: 'typically required',
+    description: 'Strong London-based option with opportunities for cross-border and comparative law.',
+    fitNote: 'High-probability reach option',
+    officialLink: 'https://www.kcl.ac.uk/study/undergraduate/courses/law-llb',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask a KCL student about London law life',
+  },
+  // Safety
+  {
+    id: 'durham-glasgow-law',
+    name: 'Durham / Glasgow & Similar',
+    location: 'UK & Scotland',
+    country: 'UK',
+    category: 'safety',
+    program: 'LLB Law',
+    cbseRequirement: '88–92%+ (varies)',
+    lnatRequired: true,
+    lnatNote: 'Often required',
+    description: 'Strong law schools offering excellent teaching and outcomes, acting as realistic, globally respected backups to your top choices.',
+    fitNote: 'Smart Backups',
+    officialLink: 'https://www.durham.ac.uk/study/courses/m101/',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Talk to a student who chose these as backups',
+  },
+  {
+    id: 'additional-safety',
+    name: 'Additional Safety Options',
+    location: 'UK',
+    country: 'UK',
+    category: 'safety',
+    program: '1–2 safer law schools',
+    cbseRequirement: 'balanced list',
+    description: 'You should always keep 1–2 safer options where your grades are comfortably above the typical entry profile.',
+    fitNote: 'Your counsellor & EduMentors will shortlist these with you, and this report will update as choices are confirmed.',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask mentors which backups worked for them',
+  },
+];
+
+// Chat Mentors (FREE first session)
+export const chatMentors: Mentor[] = [
+  {
+    id: 'cm1',
+    name: 'Aarav R.',
+    initials: 'AR',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    university: 'University of Cambridge',
+    program: 'LLB',
+    year: '2nd Year',
+    specializations: ['Admissions Journey', 'LNAT Strategy', 'College Life'],
+    description: 'Ask Aarav how he balanced CBSE boards with LNAT prep and what surprised him about studying law at Cambridge.',
+    ctaText: 'Chat Now',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'cm2',
+    name: 'Zoya S.',
+    initials: 'ZS',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    university: 'University of Oxford',
+    program: 'Law (Jurisprudence)',
+    year: 'Final Year',
+    specializations: ['Oxbridge Interviews', 'Personal Statement'],
+    description: 'Learn how Zoya framed her interest in justice & AI, and what Oxford tutorials actually feel like week to week.',
+    ctaText: 'Chat Now',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'cm3',
+    name: 'Karan V.',
+    initials: 'KV',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    university: 'LSE Law School',
+    program: 'LLB',
+    year: 'Graduate',
+    specializations: ['London Life', 'Scholarships', 'Careers'],
+    description: 'Speak to Karan about scholarships, internships in London and how LSE helped him break into legal consulting.',
+    ctaText: 'Chat Now',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'cm4',
+    name: 'Meera N.',
+    initials: 'MN',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+    university: 'UCL',
+    program: 'LLB',
+    year: '1st Year',
+    specializations: ['Transition from CBSE', 'Law & Technology'],
+    description: 'Get a realistic view of workload, societies and how UCL supports interests in legal tech and AI.',
+    ctaText: 'Chat Now',
+    ctaLink: 'https://www.edumentor.io',
+  },
+];
+
+// Connect Mentors (Premium - requires credits)
+export const connectMentors: Mentor[] = [
+  {
+    id: 'om1',
+    name: 'Aarav R.',
+    initials: 'AR',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    university: 'University of Cambridge',
+    program: 'LLB',
+    year: '2nd Year',
+    specializations: ['Admissions Journey', 'LNAT Strategy', 'College Life'],
+    description: 'Ask Aarav how he balanced CBSE boards with LNAT prep and what surprised him about studying law at Cambridge.',
+    ctaText: 'Book a 30-min call with Aarav →',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'om2',
+    name: 'Zoya S.',
+    initials: 'ZS',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    university: 'University of Oxford',
+    program: 'Law (Jurisprudence)',
+    year: 'Final Year',
+    specializations: ['Oxbridge Interviews', 'Personal Statement'],
+    description: 'Learn how Zoya framed her interest in justice & AI, and what Oxford tutorials actually feel like week to week.',
+    ctaText: 'Ask Zoya about interviews →',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'om3',
+    name: 'Karan V.',
+    initials: 'KV',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    university: 'LSE Law School',
+    program: 'LLB',
+    year: 'Graduate',
+    specializations: ['London Life', 'Scholarships', 'Careers'],
+    description: 'Speak to Karan about scholarships, internships in London and how LSE helped him break into legal consulting.',
+    ctaText: 'Understand LSE outcomes with Karan →',
+    ctaLink: 'https://www.edumentor.io',
+  },
+  {
+    id: 'om4',
+    name: 'Meera N.',
+    initials: 'MN',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+    university: 'UCL',
+    program: 'LLB',
+    year: '1st Year',
+    specializations: ['Transition from CBSE', 'Law & Technology'],
+    description: 'Get a realistic view of workload, societies and how UCL supports interests in legal tech and AI.',
+    ctaText: 'Chat with Meera about UCL life →',
+    ctaLink: 'https://www.edumentor.io',
+  },
+];
+
+// Keep for backward compatibility
+export const mockMentors = connectMentors;
+export const ourMentors = connectMentors;
+
+export const mockScholarships: Scholarship[] = [
+  {
+    id: 's1',
+    name: 'Reach Oxford Scholarship',
+    university: 'University of Oxford',
+    description: 'Fully funded scholarship for exceptional students from low-income backgrounds who cannot study in their home country.',
+    keyFit: 'Top academics, clear social-impact story, strong financial need.',
+    officialLink: 'https://www.ox.ac.uk/admissions/undergraduate/fees-and-funding/oxford-support/reach-oxford-scholarship',
+    mentorLink: 'https://www.edumentor.io',
+    mentorLinkText: 'Ask a scholar how they wrote their essays',
+  },
+  {
+    id: 's2',
+    name: 'Undergraduate Support Scheme',
+    university: 'London School of Economics (LSE)',
+    description: 'Need-based funding for overseas students at LSE who can demonstrate strong academic potential but require financial support.',
+    keyFit: 'Strong LSE application, clear explanation of financial need.',
+    officialLink: 'https://www.lse.ac.uk/study-at-lse/Undergraduate/fees-and-funding/undergraduate-support-scheme',
+  },
+  {
+    id: 's3',
+    name: 'UCL Global Undergraduate Scholarship',
+    university: 'University College London',
+    description: 'Full or partial tuition fee support for overseas students from low-income backgrounds, across all undergraduate programmes.',
+    keyFit: 'Strong academic profile, evidence of need, compelling story.',
+    officialLink: 'https://www.ucl.ac.uk/scholarships/ucl-global-undergraduate-scholarship',
+  },
+  {
+    id: 's4',
+    name: 'Cambridge Trust Scholarships',
+    university: 'University of Cambridge',
+    description: 'Mostly partial, means-tested awards for outstanding international students admitted to Cambridge.',
+    keyFit: 'High academic performance plus college-level support and strong references.',
+    officialLink: 'https://www.undergraduate.study.cam.ac.uk/international-students/financial-support',
+  },
+];
+
+export const mockTimeline: TimelinePhase[] = [
+  {
+    id: 'phase1',
+    phase: 'Phase 1 · Foundation & Acceleration',
+    title: 'Grade 11 & Early Grade 12',
+    dateRange: 'Aug 2025 – May 2026',
+    description: 'Academics + first layer of profile',
+    tasks: [
+      { text: 'Hit 90%+ in Grade 11 to secure strong predicted grades.' },
+      { 
+        text: 'Launch your Policy & Justice Forum at school and run 1 event per term.', 
+        isBold: true,
+        mentorLink: 'https://www.edumentor.io',
+        mentorLinkText: 'Ask how others built clubs',
+      },
+      { text: 'Start structured LNAT prep with dense reading and timed reasoning practice.' },
+      { text: 'Begin a small research project on Free Speech in India vs. UK.' },
+    ],
+    chips: ['Boards foundation', 'Early LNAT skills', 'First leadership signal'],
+  },
+  {
+    id: 'phase2',
+    phase: 'Phase 2 · Application Execution',
+    title: 'UCAS, LNAT & Personal Statement',
+    dateRange: 'Jun 2026 – Nov 2026',
+    description: 'Application-heavy',
+    tasks: [
+      { 
+        text: 'Book and take the LNAT (Oct deadline for Oxford/Cambridge routes).',
+        chatIntent: 'lnat-update',
+        chatIntentText: 'Later, tell your report your actual LNAT score',
+      },
+      { 
+        text: 'Draft, refine and finalise a personal statement built around justice & AI.',
+        mentorLink: 'https://www.edumentor.io',
+        mentorLinkText: 'Show your draft to a current student',
+      },
+      { text: 'Submit UCAS by 15 October for Oxbridge; add LSE, UCL, KCL etc.', isBold: true },
+      { text: 'Take the IELTS and aim for 7.5+ overall.' },
+    ],
+    chips: ['UCAS submission deadline', 'LNAT test date', 'IELTS booking'],
+  },
+  {
+    id: 'phase3',
+    phase: 'Phase 3 · Final Hurdles',
+    title: 'Boards, Interviews & Offers',
+    dateRange: 'Dec 2026 – Mar 2027',
+    description: 'High-pressure period',
+    tasks: [
+      { 
+        text: 'Prepare for potential Oxbridge interviews with mock sessions and tutor feedback.',
+        mentorLink: 'https://www.edumentor.io',
+        mentorLinkText: 'Practise with an Oxbridge law student',
+      },
+      { text: 'Finish LNAT attempts for LSE / UCL / Durham if needed.' },
+      { text: 'Shift focus to Class 12 boards while keeping LNAT skills sharp.', isBold: true },
+      { text: 'Shortlist scholarships to target as soon as offers arrive.' },
+    ],
+  },
+  {
+    id: 'phase4',
+    phase: 'Phase 4 · Pre-University Transition',
+    title: 'Scholarships, Internships & Readiness',
+    dateRange: 'Apr 2027 – Sep 2027',
+    description: 'Funding + readiness',
+    tasks: [
+      { 
+        text: 'Apply for scholarships like Reach Oxford, LSE USS, UCL Global, Cambridge Trust.',
+        mentorLink: 'https://www.edumentor.io',
+        mentorLinkText: 'Talk to a scholarship recipient',
+      },
+      { text: 'Do 1–2 internships (corporate law + legal aid / NGO) to deepen your narrative.' },
+      { text: 'Complete an AI-in-law micro-project and publish an article or blog piece on it.' },
+      { text: 'Use mentor calls to prepare for the academic and cultural shift to UK university life.' },
+    ],
+    chips: ['Scholarship deadlines', 'Internship start dates'],
+  },
+];
+
+export const portfolioItems: PortfolioItem[] = [
+  { text: 'Consistently strong grades in English, History & Political Science', marker: 'mandatory' },
+  { text: 'Found & lead a Policy & Justice Forum at school', marker: 'mandatory' },
+  { text: '1–2 serious debate / MUN achievements (district, state or national)', marker: 'recommended' },
+  { text: 'At least one legal internship (law firm or legal NGO)', marker: 'recommended' },
+  { text: '1 published article (e.g. LawBhoomi / student law review)', marker: 'recommended' },
+  { text: 'Summer school (LSE/Oxford/Cambridge) or online law & AI course', marker: 'optional' },
+  { text: 'AI-in-law capstone: research + mini-report / blog series', marker: 'bonus' },
+];
+
+export const howToGuides: HowToGuide[] = [
+  { title: 'How to apply via UCAS', description: 'account, course selection, adding choices smartly.' },
+  { title: 'How to register for the LNAT', description: 'test centre, ideal window, payment & ID.' },
+  { title: 'How to book IELTS', description: 'test format, when to take it, target scores.' },
+  { title: 'How to apply for scholarships', description: 'timelines, documents, essay strategy.' },
+  { title: 'How to email professors / societies', description: 'templates and questions to ask.' },
+];
+
+export const aiInLawActions = [
+  { text: 'Take an online course such as "CS50 for Lawyers" or an AI & law micro-course.', mentorLink: 'https://www.edumentor.io', mentorLinkText: 'Ask which courses actually helped' },
+  { text: 'Write a short research piece on how AI affects access to justice in India vs. UK.' },
+  { text: 'Host at least one school-level panel or debate on AI ethics in law.' },
+  { text: 'Discuss these experiences directly with EduMentors to refine your narrative for UCAS and interviews.' },
+];
+
+export const eduMentorsInfo = {
+  title: 'Who are EduMentors?',
+  description: 'EduMentors are real students and recent graduates who already know this course, university, city and country. You can use this roadmap with your school counsellor, family, or any other advisor — EduMentors simply ensure the information you hear about life and academics there is honest, current and lived, not just from websites.',
+  link: 'https://www.edumentor.io',
+  linkText: 'Browse EduMentors',
+};
